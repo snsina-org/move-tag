@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 tag=$1
 sha=$2
 token=$3

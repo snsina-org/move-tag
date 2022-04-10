@@ -12,5 +12,9 @@ outputs:
   text:
     description: 'A boolean value to indicate an exact match was found for the primary key'
 runs:
-  using: node16
-  main: index.js
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.tag_name }}
+    - ${{ inputs.commit_sha }}
+    - ${{ inputs.token }}

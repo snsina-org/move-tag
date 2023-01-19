@@ -6,15 +6,13 @@ inputs:
     required: true
   commit_sha:
     required: true
+  token:
+    required: true
 outputs:
   cache-hit:
     description: 'A blah value to indicate an exact match was found for the primary key'
+  text:
+    description: 'A boolean value to indicate an exact match was found for the primary key'
 runs:
-  using: "composite"
-  steps:
-    - run: |
-        git pull origin
-        git tag -f ${{ github.event.inputs.tag_name }} ${{ github.event.inputs.commit_sha }}
-        git push origin -f ${{ github.event.inputs.tag_name }}
-        ls
-      shell: bash
+  using: node16
+  main: index.js
